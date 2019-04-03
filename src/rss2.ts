@@ -102,8 +102,16 @@ export default (ins: Feed) => {
   ins.items.forEach((entry: Item) => {
     let item: any[] = [];
 
+    if (Array.isArray(entry.category)) {
+      entry.category.map(function (cat) {
+        if (cat && cat.length > 0) {
+          item.push({ category: { _cdata: cat } });
+        }
+      });
+    }
+
     if (entry.title) {
-      item.push({ title: { _cdata: entry.title } });
+      item.push({ title: entry.title });
     }
 
     if (entry.link) {

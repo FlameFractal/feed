@@ -3,6 +3,7 @@ interface Item {
   id?: string;
   link: string;
   date: Date;
+  category?: string[];
 
   description?: string;
   content?: string;
